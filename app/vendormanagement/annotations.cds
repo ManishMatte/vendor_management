@@ -1,0 +1,1 @@
+using vendorManagerService as service from '../../srv/vendor-manager';

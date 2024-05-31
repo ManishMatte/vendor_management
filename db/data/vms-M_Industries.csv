@@ -1,0 +1,20 @@
+ID,mid,text,seqid,createdAt,createdBy,modifiedAt,modifiedBy,isdel
+1,1,Aerospace and Defense,,,,,,false
+2,2,Automotive,,,,,,false
+3,3,Banks,,,,,,false
+4,4,Civic, Non-Profit and Membership Groups,,,,,,false
+5,5,Chemicals,,,,,,false
+6,6,Computer Hardware,,,,,,false
+7,7,Computer Software,,,,,,false
+8,8,Electronics,,,,,,false
+9,9,Energy and Environmental,,,,,,false
+10,10,Consumer Product Manufacturing,,,,,,false
+11,11,Corporate Services,,,,,,false
+12,12,Mining and Materials,,,,,,false
+13,13,Agriculture and Forestry,,,,,,false
+14,14,Food and Beverage,,,,,,false
+15,15,Hospitals and Healthcare,,,,,,false
+16,16,Transportation,,,,,,false
+17,17,Government,,,,,,false
+18,18,Consumer Services,,,,,,false
+19,19,Telecommunications,,,,,,false

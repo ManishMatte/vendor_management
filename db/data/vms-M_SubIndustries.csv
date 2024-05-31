@@ -1,0 +1,41 @@
+ID,mid,text,seqid,indusrty_ID,createdAt,createdBy,modifiedAt,modifiedBy,isdel
+1,1,Aerospace,,1,,,,,false
+2,2,Defense,,1,,,,,false
+3,3,Auto Components,,2,,,,,false
+4,4,Automobile Manufacturers,,2,,,,,false
+5,5,Commercial Banks,,3,,,,,false
+6,6,Diversified Banks,,3,,,,,false
+7,7,Regional Banks,,3,,,,,false
+8,8,Non-Profit Organizations,,4,,,,,false
+9,9,Public Administration,,4,,,,,false
+10,10,Commodity Chemicals,,5,,,,,false
+11,11,Diversified Chemicals,,5,,,,,false
+12,12,Specialty Chemicals,,5,,,,,false
+13,13,Computer Storage & Peripherals,,6,,,,,false
+14,14,Electronic Equipment Manufacturers,,6,,,,,false
+15,15,Application Software,,7,,,,,false
+16,16,Systems Software,,7,,,,,false
+17,17,Consumer Electronics,,8,,,,,false
+18,18,Electronic Components,,8,,,,,false
+19,19,Alternative Energy,,9,,,,,false
+20,20,Environmental Services,,9,,,,,false
+21,21,Household Appliances,,10,,,,,false
+22,22,Personal Products,,10,,,,,false
+23,23,Business Services,,11,,,,,false
+24,24,Professional Services,,11,,,,,false
+25,25,Metals & Mining,,12,,,,,false
+26,26,Paper & Forest Products,,12,,,,,false
+27,27,Crops Production,,13,,,,,false
+28,28,Livestock Services,,13,,,,,false
+29,29,Beverages,,14,,,,,false
+30,30,Food Products,,14,,,,,false
+31,31,Health Care Providers,,15,,,,,false
+32,32,Health Care Services,,15,,,,,false
+33,33,Airlines,,16,,,,,false
+34,34,Railroads,,16,,,,,false
+35,35,Government Contractors,,17,,,,,false
+36,36,Regulatory Agencies,,17,,,,,false
+37,37,Educational Services,,18,,,,,false
+38,38,Hotels & Restaurants,,18,,,,,false
+39,39,Integrated Telecommunications,,19,,,,,false
+40,40,Wireless Telecommunication Services,,19,,,,,false
