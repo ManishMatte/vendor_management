@@ -1,0 +1,10 @@
+###
+
+GET http://localhost:4004/odata/v4/vendor-manager/Vendors
+Content-Type: application/json
+
+{
+    "companyname"    : "Test Data",
+    "phone"          : "Test Data",    
+    "email"          : "Test Data"
+}

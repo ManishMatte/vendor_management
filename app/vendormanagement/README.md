@@ -1,7 +1,7 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Fri May 31 2024 09:34:37 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Fri May 31 2024 10:43:51 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-freestyle|
 |**App Generator Version**<br>1.13.5|
 |**Generation Platform**<br>SAP Business Application Studio|
@@ -9,7 +9,7 @@
 |**Service Type**<br>Local Cap|
 |**Service URL**<br>http://localhost:4004/odata/v4/vendor-manager/
 |**Module Name**<br>vendormanagement|
-|**Application Title**<br>Vendor Management|
+|**Application Title**<br>Vendor List|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_horizon|
 |**UI5 Version**<br>1.124.0|

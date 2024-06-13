@@ -1,0 +1,207 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Dialog showHeader="false">
+		<VBox class="sapUiSmallMargin">
+			<f:Form editable="true">
+				<f:title>
+					<core:Title text="Basic Information" />
+				</f:title>
+				<f:layout>
+					<f:ColumnLayout
+						columnsXL="2"
+						columnsL="2"
+						columnsM="1"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer >
+						<f:formElements>
+							<f:FormElement label="Company Name">
+								<f:fields>
+									<Input value="{oModel>/payload/companyname}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Phone">
+								<f:fields>
+									<Input value="{oModel>/payload/phone}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Email">
+								<f:fields>
+									<Input value="{oModel>/payload/email}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Grade">
+								<f:fields>
+									<Select
+										forceSelection="false"
+										selectedKey="{oModel>/payload/grade/mid}"
+										items="{
+											path: '/Grades',
+											sorter: { path: 'text' }
+										}">
+										<core:Item key="{mid}" text="{text}" />
+									</Select>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+							
+					<f:FormContainer>
+						<f:formElements>
+							<f:FormElement label="Stage">
+								<f:fields>
+									<Select
+										forceSelection="false"
+										selectedKey="{oModel>/payload/stage/mid}"
+										items="{
+											path: '/Stages',
+											sorter: { path: 'text' }
+										}">
+										<core:Item key="{mid}" text="{text}" />
+									</Select>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Industry">
+								<f:fields>
+									<Select
+										forceSelection="false"
+										selectedKey="{oModel>/payload/industry/mid}"
+										change="onIndustryChange"
+										items="{
+											path: '/Industries',
+											sorter: { path: 'text' }
+										}">
+										<core:Item key="{mid}" text="{text}" />
+									</Select>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Sub Industry">
+								<f:fields>
+									<Select
+										enabled="{= ${oModel>/payload/industry}.length > 0 ? true : fale}"
+										forceSelection="false"
+										selectedKey="{oModel>/payload/subindustry/mid}"
+										items="{
+											path: 'oModel>/SubIndustries',
+											sorter: { path: 'text' }
+										}">
+										<core:Item key="{oModel>mid}" text="{oModel>text}" />
+									</Select>
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Vendor Code">
+								<f:fields>
+									<Input value="{oModel>/payload/code}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+			<f:Form editable="true">
+				<f:title>
+					<core:Title text="Address Information" />
+				</f:title>
+				<f:layout>
+					<f:ColumnLayout
+						columnsXL="2"
+						columnsL="2"
+						columnsM="1"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer >
+						<f:formElements>
+							<f:FormElement label="Is Shipping Same as Billing Address?">
+								<f:fields>
+									<CheckBox selected="{oModel>/payload/issbasame}"/>
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer >
+						<!-- Empty Comtainier -->
+					</f:FormContainer>
+					<f:FormContainer  title="Billing Address">
+						<f:formElements>
+							<f:FormElement label="Billing Street">
+								<f:fields>
+									<Input value="{oModel>/payload/billingAddress}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Billing City">
+								<f:fields>
+									<Input value="{oModel>/payload/bilingcity}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Billing State">
+								<f:fields>
+									<Input value="{oModel>/payload/billingstate}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Billing Zip">
+								<f:fields>
+									<Input value="{oModel>/payload/billingzip}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Billing Country">
+								<f:fields>
+									<Input value="{oModel>/payload/billingcountry}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+					<f:FormContainer  title="Shipping Address" visible="{= ${oModel>/payload/issbasame} !== true ? true : false }">
+						<f:formElements>
+							<f:FormElement label="Shipping Street">
+								<f:fields>
+									<Input value="{oModel>/payload/shippingAddress}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Shipping City">
+								<f:fields>
+									<Input value="{oModel>/payload/shippingcity}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Shipping State">
+								<f:fields>
+									<Input value="{oModel>/payload/shippingstate}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Shipping Zip">
+								<f:fields>
+									<Input value="{oModel>/payload/shippingzip}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Shipping Country">
+								<f:fields>
+									<Input value="{oModel>/payload/shippingcountry}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+		<footer>
+			<Toolbar>
+				<content>
+				<ToolbarSpacer />
+					<Button type="Accept"
+						text="Save"
+						press=".onPressSave"
+						ariaHasPopup="Dialog" />
+					<Button type="Accept"
+							visible="{= ${oModel>/objectFlag} === true ? false : true }"
+							text="Save &amp; New"
+							press=".onPressSaveNew" />
+					<Button type="Reject"
+							text="Cancel"
+							press=".onFragCancel" />
+				</content>
+			</Toolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

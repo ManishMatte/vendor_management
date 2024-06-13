@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.13.5",
-      "toolsId": "a9927aeb-8e55-4e39-9503-ad96f914f018"
+      "toolsId": "bb985130-22b3-414f-a84e-0d3926e7b23a"
     },
     "dataSources": {
       "mainService": {
@@ -43,7 +43,7 @@
     }
   },
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
     "dependencies": {
       "minUI5Version": "1.124.0",
       "libs": {
@@ -93,15 +93,19 @@
         "viewPath": "vendormanagement.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "clearControlAggregation": false
+        "clearControlAggregation": false,
+        "path": "vendormanagement.view"
       },
       "routes": [
         {
-          "name": "Routeworklist",
           "pattern": ":?query:",
-          "target": [
-            "Targetworklist"
-          ]
+          "name": "Targetworklist",
+          "target": "Targetworklist"
+        },
+        {
+          "pattern": "Details({ID}):?query:",
+          "name": "Targetobject",
+          "target": "Targetobject"
         }
       ],
       "targets": {
@@ -111,6 +115,13 @@
           "clearControlAggregation": false,
           "viewId": "worklist",
           "viewName": "worklist"
+        },
+        "Targetobject": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "object",
+          "viewName": "object"
         }
       }
     },

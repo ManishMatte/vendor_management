@@ -1,4 +1,4 @@
-ID,mid,text,seqid,indusrty_ID,createdAt,createdBy,modifiedAt,modifiedBy,isdel
+ID,mid,text,seqid,industry_ID,createdAt,createdBy,modifiedAt,modifiedBy,isdel
 1,1,Aerospace,,1,,,,,false
 2,2,Defense,,1,,,,,false
 3,3,Auto Components,,2,,,,,false

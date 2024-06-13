@@ -1,0 +1,338 @@
+<mvc:View xmlns:table="sap.ui.table" controllerName="vendormanagement.controller.object"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:forms="sap.ui.layout.form"
+	xmlns:fiori="sap.ui.webc.fiori"
+	xmlns:main="sap.ui.webc.main"
+	height="100%">
+
+	<ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false" useIconTabBar="true">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{oModel>/payload/companyname}" />
+				</expandedHeading>
+
+				<snappedHeading>
+					<m:HBox>
+						<m:Avatar src="{oModel>/logo}"
+						class="sapUiMediumMarginEnd"
+							displayShape="Square" />
+						<m:VBox>
+							<m:Title text="{oModel>/payload/companyname}" />
+							<m:Label text="{oModel>/payload/code}" />
+						</m:VBox>
+					</m:HBox>
+				</snappedHeading>
+
+				<expandedContent>
+					<m:Label text="{oModel>/payload/code}"/>
+				</expandedContent>
+
+				<snappedTitleOnMobile>
+					<m:Title text="{oModel>/payload/companyname}" />
+				</snappedTitleOnMobile>
+
+				<actions>
+					<m:Button text="Edit" type="Emphasized" press="onPressEdit"/>
+					<m:Button text="Delete" type="Critical"/>
+					<m:Button text="Custom Button" type="Success" />
+					<m:Button text="Rate" type="Attention" />
+				</actions>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true">
+					<m:Avatar src="{oModel>/logo}"
+					class="sapUiMediumMarginEnd sapUiSmallMarginBottom"
+					displayShape="Square"
+					displaySize="L" />
+
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title text="Stage" class="sapUiTinyMarginBottom" />
+					<m:ObjectStatus text="{
+									path:'oModel>/payload/stage/mid',
+									formatter:'.formatter.formatStage'
+								}"
+						class="sapMObjectStatusLarge" />
+				</m:VBox>
+
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title text="Industry" class="sapUiTinyMarginBottom" />
+					<m:ObjectStatus text="{
+									path:'oModel>/payload/industry/mid',
+									formatter:'.formatter.formatIndustry'
+								}"
+						icon="sap-icon://shipping-status"
+						class="sapMObjectStatusLarge" />
+				</m:VBox>
+
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title text="Sub Industry" class="sapUiTinyMarginBottom" />
+					<m:ObjectStatus text="{
+									path : 'oModel>/payload/subindustry/mid',
+									formatter : '.formatter.formatSubIndustry'
+								}"
+						class="sapMObjectStatusLarge" />
+				</m:VBox>
+
+				<m:VBox class="sapUiLargeMarginEnd sapUiSmallMarginBottom">
+					<m:Title text="Grade" class="sapUiTinyMarginBottom" />
+					<m:ObjectStatus text="{
+									path : 'oModel>/payload/grade/mid',
+									formatter:'.formatter.formatGrade'
+								}"
+						class="sapMObjectStatusLarge" />
+				</m:VBox>
+
+				<m:VBox class="sapUiLargeMarginEnd">
+					<m:Title text="Monthly Leasing Instalment" class="sapUiTinyMarginBottom" />
+					<m:ObjectNumber number="379.99"
+						unit="USD"
+						emphasized="true"
+						class="sapMObjectNumberLarge" />
+				</m:VBox>
+
+				<m:VBox class="sapUiLargeMarginEnd">
+					<m:Title text="Vendor Rating"/>
+					<m:RatingIndicator maxValue="5" class="sapUiSmallMarginBottom" value="4" tooltip="Overall Rating" editable="false"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>
+
+		<sections>
+			<ObjectPageSection titleUppercase="false" title="General Information">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+								<forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent"
+								layout="ColumnLayout"
+								columnsM="2"
+								columnsL="4"
+								columnsXL="5">
+
+								<core:Title text="Basic Details" />
+
+								<m:Label text="Company Name" />
+								<m:Text text="{oModel>/payload/companyname}" />
+
+								<m:Label text="Phone" />
+								<m:Link text="{oModel>/payload/phone}" />
+
+								<m:Label text="Email" />
+								<m:Text text="{oModel>/payload/email}" />
+
+								<m:Label text="Grade" />
+								<m:Text text="{
+									path : 'oModel>/payload/grade/mid',
+									formatter:'.formatter.formatGrade'
+								}" />
+
+								<m:Label text="Stage" />
+								<m:Text text="{
+									path:'oModel>/payload/stage/mid',
+									formatter:'.formatter.formatStage'
+								}" />
+
+								<m:Label text="Industry" />
+								<m:Text text="{
+									path:'oModel>/payload/industry/mid',
+									formatter:'.formatter.formatIndustry'
+								}" />
+
+								<m:Label text="Sub Industry" />
+								<m:Text text="{
+									path : 'oModel>/payload/subindustry/mid',
+									formatter : '.formatter.formatSubIndustry'
+								}" />
+							</forms:SimpleForm>
+						</blocks>
+						<blocks>
+								<forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent"
+								layout="ColumnLayout"
+								columnsM="2"
+								columnsL="4"
+								columnsXL="5"
+								>
+
+								<core:Title text="Billing Address Information" />
+								
+								<m:Label text="Is Shipping Same as Billing Address?" />
+								<m:CheckBox selected="{oModel>/payload/issbasame}" editable="false"/>
+
+								<m:Label text="Billing Street" />
+								<m:Text text="{oModel>/payload/billingAddress}" />
+
+								<m:Label text="Billing City" />
+								<m:Text text="{oModel>/payload/bilingcity}" />
+
+								<m:Label text="Billing State" />
+								<m:Text text="{oModel>/payload/billingstate}" />
+
+								<m:Label text="Billing Zip" />
+								<m:Text text="{oModel>/payload/billingzip}" />
+
+								<m:Label text="Billing Country" />
+								<m:Text text="{oModel>/payload/billingcountry}" />
+
+							</forms:SimpleForm>
+						</blocks>
+						<blocks >
+								<forms:SimpleForm class="sapUxAPObjectPageSubSectionAlignContent"
+								layout="ColumnLayout"
+								columnsM="2"
+								columnsL="4"
+								columnsXL="5"
+								visible="{= ${oModel>/payload/issbasame} !== true ? true : false }"
+								>
+
+								<core:Title text="Shipping Address Information" />
+
+								<m:Label text="Shipping Street" />
+								<m:Text text="{oModel>/payload/shippingAddress}" />
+
+								<m:Label text="Shipping City" />
+								<m:Text text="{oModel>/payload/shippingcity}" />
+
+								<m:Label text="Shipping State" />
+								<m:Text text="{oModel>/payload/shippingstate}" />
+
+								<m:Label text="Shipping Zip" />
+								<m:Text text="{oModel>/payload/shippingzip}" />
+
+								<m:Label text="Shipping Country" />
+								<m:Text text="{oModel>/payload/shippingcountry}" />
+
+							</forms:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Contacts">
+				<subSections>
+					<ObjectPageSubSection>
+							<m:Table
+								id="contactTable"
+								inset="false"
+								items="{oModel>/payload/contacts}"
+							>
+							<m:headerToolbar>
+							<m:OverflowToolbar >
+							<m:ToolbarSpacer />
+							<m:Button text="Add" type="Emphasized" press="onPressAddContact"/>
+							</m:OverflowToolbar>
+							</m:headerToolbar>
+							<m:noData>
+								<fiori:IllustratedMessage name="NoData" subtitleText="Try creating new contacts." titleText="No Contacts Available">
+									<fiori:actions>
+										<main:Button icon="employee" text="Add New Contact" class="sapUiSmallMarginEnd" click="onPressAddContact"/>
+									</fiori:actions>
+								</fiori:IllustratedMessage>
+							</m:noData>
+								<m:columns>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Contact Name"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Title"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Email"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Phone"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true" width="150px">
+										<m:Text text=""/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true" width="150px">
+										<m:Text text=""/>
+									</m:Column>
+								</m:columns>
+
+								<m:items>
+									<m:ColumnListItem vAlign="Middle">
+										<m:cells>
+											<m:Text text="{oModel>name}"/>
+											<m:Text text="{oModel>title}" />
+											<m:Text text="{oModel>email}" />
+											<m:Text text="{oModel>phone}"/>
+											<m:Button icon="sap-icon://edit" press="onPressEditContact"/>
+											<m:Button icon="sap-icon://delete" press="onPressEditContact"/>
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+			<ObjectPageSection titleUppercase="false" title="Products">
+				<subSections>
+					<ObjectPageSubSection>
+							<m:Table
+								id="productTable"
+								inset="false"
+								items="{oModel>/payload/products}"
+							>
+							<m:headerToolbar>
+							<m:OverflowToolbar >
+							<m:ToolbarSpacer />
+							<m:Button text="Add" type="Emphasized" press="onPressAddProduct"/>
+							</m:OverflowToolbar>
+							</m:headerToolbar>
+							<m:noData>
+								<fiori:IllustratedMessage name="NoData" subtitleText="Try adding new products." titleText="No Products Available">
+									<fiori:actions>
+										<main:Button icon="product" text="Add New Product" class="sapUiSmallMarginEnd" click="onPressAddProduct"/>
+									</fiori:actions>
+								</fiori:IllustratedMessage>
+							</m:noData>
+								<m:columns>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Product Name"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Product Image"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Product Family"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Product Code"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Currency"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true">
+										<m:Text text="Special Sales Price"/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true" width="150px">
+										<m:Text text=""/>
+									</m:Column>
+									<m:Column minScreenWidth="Tablet" demandPopin="true" width="150px">
+										<m:Text text=""/>
+									</m:Column>
+								</m:columns>
+
+								<m:items>
+									<m:ColumnListItem vAlign="Middle">
+										<m:cells>
+											<m:Text text="{oModel>name}"/>
+											<m:Text text="{oModel>image}" />
+											<m:Text text="{oModel>family}" />
+											<m:Text text="{oModel>price}"/>
+											<m:Button icon="sap-icon://edit" press="onPressEditContact"/>
+											<m:Button icon="sap-icon://delete" press="onPressEditContact"/>
+										</m:cells>
+									</m:ColumnListItem>
+								</m:items>
+							</m:Table>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
+</mvc:View>

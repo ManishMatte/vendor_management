@@ -1,7 +1,93 @@
-<mvc:View controllerName="vendormanagement.controller.worklist"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
-    </Page>
+<mvc:View
+		controllerName="vendormanagement.controller.worklist"
+		height="100%"
+		xmlns:mvc="sap.ui.core.mvc"
+		xmlns:core="sap.ui.core"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:fb="sap.ui.comp.filterbar"
+		xmlns:svm="sap.ui.comp.smartvariants">
+		<f:DynamicPage headerExpanded="{oModel>/headerExpanded}">
+			<f:header>
+				<f:DynamicPageHeader >
+					<f:content>
+						<fb:FilterBar id="filterbar" showClearOnFB="true" persistencyKey="myPersKey" useToolbar="false" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+							<fb:filterGroupItems>
+								<fb:FilterGroupItem name="Stage" label="Stage" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<MultiComboBox
+											selectedKeys="{oModel>/stageKeys}"
+											items="{
+												path: '/Stages',
+												templateShareable: true
+											}"
+										>
+											<core:Item key="{mid}" text="{text}"/>
+										</MultiComboBox>
+									</fb:control>
+								</fb:FilterGroupItem>
+                                <fb:FilterGroupItem name="Company Name" label="Company Name" groupName="Group1" visibleInFilterBar="true">
+									<fb:control>
+										<Input showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onClickValueHelp" />
+									</fb:control>
+								</fb:FilterGroupItem>
+							</fb:filterGroupItems>
+						</fb:FilterBar>
+						<OverflowToolbar id="otb1">
+							<ToolbarSpacer/>
+							<Button text="Add New Vendor" type="Emphasized" icon="sap-icon://add" press="onPressAddVendor"/>
+						</OverflowToolbar>
+					</f:content>
+				</f:DynamicPageHeader>
+			</f:header>
+			<f:content>
+				<Table
+					id="table"
+					inset="false"
+					items="{
+						path: '/Vendors'
+					}"
+				>
+                <noData>
+                    <IllustratedMessage/>
+                </noData>
+					<columns>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Company Name"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Phone"/>
+						</Column>
+						<Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Email"/>
+						</Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Stage"/>
+						</Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Shipping Street"/>
+						</Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+							<Text text="Billing Street"/>
+						</Column>
+					</columns>
+
+					<items>
+						<ColumnListItem vAlign="Middle">
+							<cells>
+								<Link text="{companyname}" press="onPressVendor"/>
+								<Text text="{phone}" />
+								<Text text="{email}" />
+								<Text text="{
+								path: 'stage/mid',
+								formatter: '.formatter.formatStage'
+								}"/>
+                                <Text text="{= ${shippingAddress}.length > 0 ? ${shippingAddress} : '-'}" />
+                                <Text text="{billingAddress}" />
+							</cells>
+						</ColumnListItem>
+					</items>
+				</Table>
+			</f:content>
+		</f:DynamicPage>
 </mvc:View>

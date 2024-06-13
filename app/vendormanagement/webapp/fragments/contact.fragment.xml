@@ -1,0 +1,64 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	<Dialog showHeader="false">
+		<VBox class="sapUiSmallMargin">
+			<f:Form editable="true">
+				<f:title>
+					<core:Title text="Contact Information" />
+				</f:title>
+				<f:layout>
+					<f:ColumnLayout
+						columnsXL="2"
+						columnsL="2"
+						columnsM="1"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer >
+						<f:formElements>
+							<f:FormElement label="Contact Name">
+								<f:fields>
+									<Input value="{oModel>/contact/name}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Title">
+								<f:fields>
+									<Input value="{oModel>/contact/title}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Email">
+								<f:fields>
+									<Input value="{oModel>/contact/email}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Phone">
+								<f:fields>
+									<Input value="{oModel>/contact/phone}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+		<footer>
+			<Toolbar>
+				<content>
+				<ToolbarSpacer />
+					<Button type="Accept"
+						text="Save"
+						press=".onPressSaveContact"
+						ariaHasPopup="Dialog" />
+					<Button type="Accept"
+							text="Save &amp; New"
+							press=".onPressSaveNewContact" />
+					<Button type="Reject"
+							text="Cancel"
+							press=".closeContactFragment" />
+				</content>
+			</Toolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

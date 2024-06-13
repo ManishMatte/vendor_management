@@ -1,4 +1,3 @@
----
 _schema-version: '3.1'
 ID: vendor_management
 version: 1.0.0
@@ -25,4 +24,20 @@ modules:
       - name: srv-api # required by consumers of CAP services (e.g. approuter)
         properties:
           srv-url: ${default-url}
-    requires: []
+    requires:
+      - name: vendor_management-db
+
+  - name: vendor_management-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: vendor_management-db
+
+resources:
+  - name: vendor_management-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared

@@ -20,7 +20,15 @@
     "start": "cds-serve",
     "watch-vendormanagement": "cds watch --open vendormanagement/webapp/index.html?sap-ui-xx-viewCache=false"
   },
+  "cds": { "requires": {
+    "db": {
+       "kind": "sqlite",
+       "credentials": { "url": "vendor.db" },
+       "schema_evolution": "auto"
+    }
+ }},
   "sapux": [
+    "app/vendormanagement",
     "app/vendormanagement"
   ]
 }

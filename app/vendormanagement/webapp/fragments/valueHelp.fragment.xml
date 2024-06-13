@@ -1,0 +1,18 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<SelectDialog
+		id="mySelectDialog"
+		noDataText="No Vendors Found"
+		title="Select Vendor"
+		search=".onSearch"
+		confirm=".onDialogClose"
+		cancel=".onDialogClose"
+		items="{
+			path: '/CompanyList'
+		}">
+		<StandardListItem
+			title="{companyname}"
+			type="Active" />
+	</SelectDialog>
+</core:FragmentDefinition>

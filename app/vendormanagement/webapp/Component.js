@@ -5,7 +5,8 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "vendormanagement/model/models"
+        "vendormanagement/model/models",
+        "sap/ui/webc/fiori/illustrations/NoData"
     ],
     function (UIComponent, Device, models) {
         "use strict";

@@ -1,0 +1,79 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core"
+	xmlns:main="sap.ui.webc.main">
+	<Dialog showHeader="false">
+		<VBox class="sapUiSmallMargin">
+			<f:Form editable="true">
+				<f:title>
+					<core:Title text="Contact Information" />
+				</f:title>
+				<f:layout>
+					<f:ColumnLayout
+						columnsXL="2"
+						columnsL="2"
+						columnsM="1"/>
+				</f:layout>
+				<f:formContainers>
+					<f:FormContainer >
+						<f:formElements>
+							<f:FormElement label="Product Name">
+								<f:fields>
+									<Input value="{oModel>/product/name}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Product Image">
+								<f:fields>
+									<main:FileUploader placeholder="Upload file..." value="{oModel>/product/image}"  change="handleChange" id="fileUploader">
+										<main:content>
+											<Button text="Upload"></Button>
+										</main:content>
+									</main:FileUploader>
+								</f:fields> 
+							</f:FormElement>
+							<f:FormElement label="Product Family">
+								<f:fields>
+									<Input value="{oModel>/product/family}" />
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement label="Product Code">
+								<f:fields>
+									<Input value="{oModel>/product/code}" />
+								</f:fields>
+							</f:FormElement>
+							<f:FormElement label="Currency">
+								<f:fields>
+									<Input value="{oModel>/product/currency}" />
+								</f:fields>
+							</f:FormElement>
+                            <f:FormElement label="Price">
+								<f:fields>
+									<Input value="{oModel>/product/price}" />
+								</f:fields>
+							</f:FormElement>
+						</f:formElements>
+					</f:FormContainer>
+				</f:formContainers>
+			</f:Form>
+		</VBox>
+		<footer>
+			<Toolbar>
+				<content>
+				<ToolbarSpacer />
+					<Button type="Accept"
+						text="Save"
+						press=".onPressSaveProduct"
+						ariaHasPopup="Dialog" />
+					<Button type="Accept"
+							text="Save &amp; New"
+							press=".onPressSaveNewProduct" />
+					<Button type="Reject"
+							text="Cancel"
+							press=".closeProductFrag" />
+				</content>
+			</Toolbar>
+		</footer>
+	</Dialog>
+</core:FragmentDefinition>

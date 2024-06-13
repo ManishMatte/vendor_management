@@ -14,30 +14,80 @@ entity Vendors : cuid, managed {
 
     //Vendor Basic Details
 
-    companyname    : String(100);
-    phone          : String(10);
-    grade          : Composition of one M_Grades;
-    stage          : Composition of one M_Stages;
-    indusrty       : Composition of one M_Industries;
-    subindusrty    : Composition of one M_SubIndustries;
-    code           : String(10);
+    companyname     : String(100);
+    phone           : String(10);
+    email           : String(100);
+    grade           : Composition of one T_Grades;
+    stage           : Composition of one T_Stages;
+    industry        : Composition of one T_Industries;
+    subindustry     : Composition of one T_SubIndustries;
+    contacts        : Composition of many Contacts
+                          on contacts.vendor = $self;
+    products        : Composition of many Products
+                          on products.vendor = $self;
+    code            : String(10);
 
     // Vendor Address Details
 
-    issbasame      : Boolean; // Is Shiping and billing addresses same ?
+    issbasame       : Boolean; // Is Shiping and billing addresses same ?
 
-    billingAddress : String(500);
-    bilingcity     : String(50);
-    billingstate   : String(100);
-    billingzip     : String(10);
-    billingcountry : String(100);
-    shipingAddress : String(500);
-    shipingcity    : String(50);
-    shipingstate   : String(100);
-    shipingzip     : String(10);
-    shipingcountry : String(100);
+    billingAddress  : String(500);
+    bilingcity      : String(50);
+    billingstate    : String(100);
+    billingzip      : String(10);
+    billingcountry  : String(100);
+    shippingAddress : String(500);
+    shippingcity    : String(50);
+    shippingstate   : String(100);
+    shippingzip     : String(10);
+    shippingcountry : String(100);
 
 }
+
+//Products data
+
+entity Products : cuid, managed {
+    name     : String(100);
+    image    : LargeString;
+    family   : String(100);
+    code     : String(100);
+    currency : String(100);
+    price    : String(100);
+    vendor   : Association to Vendors;
+}
+
+// Contacts data
+
+entity Contacts : cuid, managed {
+
+    name   : String(100);
+    title  : String(100);
+    email  : String(200);
+    phone  : String(50);
+    vendor : Association to one Vendors;
+
+}
+
+// Grades Transactional data
+entity T_Grades : cuid, managed {
+    mid : Int16;
+}
+
+//Stages Transactional Data
+entity T_Stages : cuid, managed {
+    mid : Int16;
+}
+
+// Industries Transactional data
+entity T_Industries : cuid, managed {
+    mid : Int16;
+}
+
+// Sub Industries Transactional Data
+entity T_SubIndustries : cuid, managed {
+    mid : Int16;
+}
+
 
 // Grades Master data
 entity M_Grades : cuid, managed {
@@ -55,16 +105,17 @@ entity M_Stages : cuid, managed {
 
 // Industries Matser data
 entity M_Industries : cuid, managed {
-    mid   : Int16;
-    text  : String(100);
-    seqid : Int16;
-    subindusrty : Composition of many M_SubIndustries on subindusrty.indusrty = $self;
+    mid         : Int16;
+    text        : String(100);
+    seqid       : Int16;
+    subindustry : Composition of many M_SubIndustries
+                      on subindustry.industry = $self;
 }
 
 // Sub Industries Master Data
 entity M_SubIndustries : cuid, managed {
-    mid   : Int16;
-    text  : String(100);
-    seqid : Int16;
-    indusrty : Association to M_Industries;
+    mid      : Int16;
+    text     : String(100);
+    seqid    : Int16;
+    industry : Association to M_Industries;
 }
